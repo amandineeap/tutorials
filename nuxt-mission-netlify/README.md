@@ -2,6 +2,8 @@
 
 [nuxt-mission tutorial](https://explorers.netlify.com/learn/get-started-with-nuxt)
 
+[View deployed on Netlify](https://nuxt-mission-netlify.netlify.app/)
+
 ## Build Setup
 
 ```bash
