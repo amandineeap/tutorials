@@ -1,11 +1,13 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Post {{ $route.params.id }}</h1>
+      <h1 class="post-title">
+        {{ loadedPost.title }}
+      </h1>
       <div class="post-details">
-        <div>Last updated on xxx</div>
-        <div>Written by xxx</div>
-        <p class="post-detail">Content</p>
+        <div>Last updated on {{ loadedPost.updatedDate }}</div>
+        <div>Written by {{ loadedPost.author }}</div>
+        <p class="post-detail">{{ loadedPost.content }}</p>
       </div>
     </section>
     <section class="post-feedback">
@@ -67,3 +69,24 @@
   color: salmon;
 }
 </style>
+
+<script>
+export default {
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: "1",
+          title: "post with (ID: " + context.route.params.id + ")",
+          previewText: "first post",
+          author: "Amandine",
+          updatedDate: new Date(),
+          content: "full content bla bla bla bla bla bla",
+          thumnail:
+            "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
+        }
+      });
+    }, 1000);
+  }
+};
+</script>

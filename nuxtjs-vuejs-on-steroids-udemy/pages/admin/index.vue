@@ -8,7 +8,7 @@
 
     <section class="existing-posts">
       <h1>Existing posts</h1>
-      <PostList />
+      <PostList :posts="loadedPosts" />
     </section>
   </div>
 </template>
@@ -22,6 +22,26 @@ export default {
   components: {
     PostList,
     AppButton
+  },
+  data() {
+    return {
+      loadedPosts: [
+        {
+          id: "1",
+          title: "first",
+          previewText: "first post",
+          thumnail:
+            "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
+        },
+        {
+          id: "2",
+          title: "second",
+          previewText: "second post",
+          thumnail:
+            "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
+        }
+      ]
+    };
   }
 };
 </script>

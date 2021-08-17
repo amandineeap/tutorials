@@ -1,25 +1,13 @@
 <template>
   <section class="post-list">
     <PostPreview
-      id="1"
+      v-for="post in posts"
+      :key="post.id"
+      :id="post.id"
       :is-admin="isAdmin"
-      title="post 1"
-      previewText="first post"
-      thumbnail="http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
-    />
-    <PostPreview
-      id="2"
-      :is-admin="isAdmin"
-      title="post 2"
-      previewText="second post"
-      thumbnail="https://d.newsweek.com/en/full/1245050/12-5-alpaca.jpg"
-    />
-    <PostPreview
-      id="3"
-      :is-admin="true"
-      title="post 3"
-      previewText="third post"
-      thumbnail="https://www.havealovelytime.com/wp-content/uploads/2019/03/Alpaca-Experiences-UK.jpg"
+      :title="post.title"
+      :previewText="post.previewText"
+      :thumbnail="post.thumnail"
     />
   </section>
 </template>
@@ -35,6 +23,10 @@ export default {
     isAdmin: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 };
