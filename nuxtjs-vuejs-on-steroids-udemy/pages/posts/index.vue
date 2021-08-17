@@ -33,14 +33,14 @@ export default {
   //             id: "1",
   //             title: "first",
   //             previewText: "first post",
-  //             thumnail:
+  //             thumbnail:
   //               "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
   //           },
   //           {
   //             id: "2",
   //             title: "second",
   //             previewText: "second post",
-  //             thumnail:
+  //             thumbnail:
   //               "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
   //           }
   //         ]
@@ -68,14 +68,14 @@ export default {
   //             id: "1",
   //             title: "first",
   //             previewText: "first post",
-  //             thumnail:
+  //             thumbnail:
   //               "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
   //           },
   //           {
   //             id: "2",
   //             title: "second",
   //             previewText: "second post",
-  //             thumnail:
+  //             thumbnail:
   //               "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
   //           }
   //         ]
@@ -97,14 +97,14 @@ export default {
   //         id: "1",
   //         title: "first",
   //         previewText: "first post",
-  //         thumnail:
+  //         thumbnail:
   //           "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
   //       },
   //       {
   //         id: "2",
   //         title: "second",
   //         previewText: "second post",
-  //         thumnail:
+  //         thumbnail:
   //           "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
   //       }
   //     ]

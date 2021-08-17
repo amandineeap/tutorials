@@ -71,22 +71,35 @@
 </style>
 
 <script>
+import axios from "axios";
+
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: {
-          id: "1",
-          title: "post with (ID: " + context.route.params.id + ")",
-          previewText: "first post",
-          author: "Amandine",
-          updatedDate: new Date(),
-          content: "full content bla bla bla bla bla bla",
-          thumnail:
-            "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
-        }
-      });
-    }, 1000);
+  asyncData(context) {
+    // , callback
+    return axios
+      .get(
+        "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app/posts/" +
+          context.route.params.id +
+          ".json"
+      )
+      .then(res => {
+        return { loadedPost: res.data };
+      })
+      .catch(e => context.error(e));
+    // setTimeout(() => {
+    //   callback(null, {
+    //     loadedPost: {
+    //       id: "1",
+    //       title: "post with (ID: " + context.route.params.id + ")",
+    //       previewText: "first post",
+    //       author: "Amandine",
+    //       updatedDate: new Date(),
+    //       content: "full content bla bla bla bla bla bla",
+    //       thumbnail:
+    //         "http://ecolonomics.org/wp-content/uploads/2015/09/alpaca-43324_1280.jpg"
+    //     }
+    //   });
+    // }, 1000);
   }
 };
 </script>
