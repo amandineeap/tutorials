@@ -1,3 +1,5 @@
+const bodyParser = require("body-parser");
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
@@ -83,5 +85,7 @@ export default {
   transition: {
     name: "fade",
     mode: "out-in"
-  }
+  },
+
+  serverMiddleware: [bodyParser.json(), "~/api"]
 };

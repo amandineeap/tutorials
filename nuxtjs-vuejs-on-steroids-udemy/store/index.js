@@ -122,6 +122,9 @@ const createStore = () => {
               "expirationDate",
               new Date().getTime() + Number.parseInt(result.expiresIn) * 1000
             );
+            return this.$axios.$post("http://localhost:3000/api/track-data", {
+              data: "Authenticated!"
+            });
             // vuexContext.dispatch("setLogoutTimer", result.expiresIn * 1000);
           })
           .catch(e => console.log(e));
