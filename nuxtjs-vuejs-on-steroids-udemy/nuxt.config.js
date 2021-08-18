@@ -66,7 +66,8 @@ export default {
   env: {
     baseUrl:
       process.env.BASE_URL ||
-      "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app"
+      "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app",
+    fbAPIKey: "AIzaSyDS5p3BxYj3xqkk5r68MIva_Tz3_zHDnys"
   },
 
   // router: {
