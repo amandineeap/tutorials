@@ -5,7 +5,7 @@
         {{ loadedPost.title }}
       </h1>
       <div class="post-details">
-        <div>Last updated on {{ loadedPost.updatedDate }}</div>
+        <div>Last updated on {{ loadedPost.updatedDate | date }}</div>
         <div>Written by {{ loadedPost.author }}</div>
         <p class="post-detail">{{ loadedPost.content }}</p>
       </div>
@@ -77,11 +77,7 @@ export default {
   asyncData(context) {
     // , callback
     return axios
-      .get(
-        "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app/posts/" +
-          context.route.params.id +
-          ".json"
-      )
+      .get(process.env.baseUrl + "/posts/" + context.route.params.id + ".json")
       .then(res => {
         return { loadedPost: res.data };
       })
@@ -100,6 +96,9 @@ export default {
     //     }
     //   });
     // }, 1000);
+  },
+  head: {
+    title: "test single post"
   }
 };
 </script>

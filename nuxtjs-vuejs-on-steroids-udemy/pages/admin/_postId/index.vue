@@ -19,9 +19,7 @@ export default {
     // , callback
     return axios
       .get(
-        "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app/posts/" +
-          context.route.params.postId +
-          ".json"
+        process.env.baseUrl + "/posts/" + context.route.params.postId + ".json"
       )
       .then(res => {
         return { loadedPost: { ...res.data, id: context.route.params.postId } };

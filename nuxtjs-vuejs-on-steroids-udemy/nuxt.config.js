@@ -24,11 +24,24 @@ export default {
     ]
   },
 
+  // Customize loading bar
+  // loading: {
+  //   color: "#ffffff",
+  //   height: "4px",
+  //   duration: 5000
+  // },
+
+  // loadingIndicator: {
+  //   name: "circle",
+  //   color: "#fa923f"
+  // },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["~/assets/styles/main.css"],
+  css: ["~assets/styles/main.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  // Things to reuse throughout the app and set once
+  plugins: ["~plugins/core-components.js", "~plugins/date-filter.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -37,8 +50,37 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  // Add extra third party functionalities
+  modules: ["@nuxtjs/axios"],
+  axios: {
+    baseURL:
+      process.env.BASE_URL ||
+      "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app",
+    credentials: false
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  // Environment variables
+  env: {
+    baseUrl:
+      process.env.BASE_URL ||
+      "https://nuxtjs-vuejs-on-steroid-default-rtdb.europe-west1.firebasedatabase.app"
+  },
+
+  // router: {
+  //   // extendRoutes(routes, resolve) {
+  //   //   routes.push({
+  //   //     path: "*",
+  //   //     component: resolve(__dirname, "pages/index.vue")
+  //   //   });
+  //   // }
+  //   linkActiveClass: "active"
+  // }
+
+  transition: {
+    name: "fade",
+    mode: "out-in"
+  }
 };
