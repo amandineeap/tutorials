@@ -5,5 +5,13 @@
         "**/2-advanced-examples/*"
     ],
     "viewportHeight": 1080,
-    "viewportWidth": 1920
+    "viewportWidth": 1920,
+    "projectId": "4yyed9",
+    "env": {
+        "cypress-plugin-snapshots": {
+            "imageConfig": {
+                "threshold": 0.01
+            }
+        }
+    }
 }
