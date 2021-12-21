@@ -3,14 +3,12 @@
     "name": "home-id",
     "path": "/home/:id?",
     "component": "/Users/amandine/Documents/Amandine/GitHub/tutorials/nuxt-masteringnuxt-nuxtbnb/pages/home/_id.vue",
-    "chunkName": "pages/home/_id",
-    "_name": "_2d995f80"
+    "chunkName": "pages/home/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/amandine/Documents/Amandine/GitHub/tutorials/nuxt-masteringnuxt-nuxtbnb/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_4b7889cc"
+    "chunkName": "pages/index"
   }
 ]

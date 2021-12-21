@@ -3,11 +3,17 @@
         <div style="display: flex;">
             <img v-for="image in home.images" :key="image" :src="image" width="200" height="150"/>
         </div>
-        {{home.title}}<br/>
-        {{ home.pricePerNight }}/ night <br/>
-        <img src="/images/marker.svg" width="20" height="20"/>{{ home.location.address }} {{ home.location.city }} {{ home.location.state }} {{ home.location.country }}<br/>
-        <img src="/images/star.svg" width="20" height="20"/>{{ home.reviewValue }}
-        {{ home.guests}} guests, {{ home.bedrooms }} rooms, {{ home.bathrooms}} bath<br/>
+        <div>
+            {{home.title}}<br/>
+            {{ home.pricePerNight }}/ night <br/>
+            <img src="/images/marker.svg" width="20" height="20"/>{{ home.location.address }} {{ home.location.city }} {{ home.location.state }} {{ home.location.country }}<br/>
+            <img src="/images/star.svg" width="20" height="20"/>{{ home.reviewValue }}
+            {{ home.guests}} guests, {{ home.bedrooms }} rooms, {{ home.bathrooms}} bath<br/>
+            {{ home.description }}
+        </div>
+        <div class="map-container">
+            <div style="height: 800px, width: 800px;" ref="map" class="map"></div>
+        </div>
     </div>
 </template>
 
@@ -25,9 +31,23 @@ export default {
             home:{}
         }
     },
+    mounted(){ // client side only
+      this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng)
+    },
     created(){
         const home = homes.find( home => home.objectID == this.$route.params.id)
         this.home = home
-    }
+    },
 }
 </script>
+
+<style>
+.map-container{
+    position: relative;
+    margin-top: 200px;
+}
+.map{
+    position: inherit !important;
+    overflow: visible !important;
+}
+</style>
