@@ -11,14 +11,23 @@
             {{ home.guests}} guests, {{ home.bedrooms }} rooms, {{ home.bathrooms}} bath<br/>
             {{ home.description }}
         </div>
+      
+
         <div class="map-container">
             <div style="height: 800px, width: 800px;" ref="map" class="map"></div>
         </div>
+
+        <div v-for="review in reviews" :key="review.objectID">
+            <img :src="review.reviewer.image" /><br/>
+            {{ review.reviewer.name}}<br/>
+            {{review.date}}<br/>
+            {{review.rating}}
+        </div>
+       
     </div>
 </template>
 
 <script>
-import homes from '~/data/homes'
 
 export default {
     head(){
@@ -26,17 +35,20 @@ export default {
             title: this.home.title,
         }
     },
-    data(){
-        return {
-            home:{}
-        }
-    },
     mounted(){ // client side only
       this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng)
     },
-    created(){
-        const home = homes.find( home => home.objectID == this.$route.params.id)
-        this.home = home
+    async asyncData({params, $dataApi}){
+        const homeResponse = await $dataApi.getHome(params.id)
+        if(!homeResponse.ok) return Error({statusCode: homeResponse.status, message: homeResponse.statusText })
+
+         const reviewResponse = await $dataApi.getReviewsByHomeId(params.id)
+         console.log('reviewResponse', reviewResponse.json)
+        if(!reviewResponse.ok) return Error({statusCode: reviewResponse.status, message: reviewResponse.statusText })
+        return {
+            home: homeResponse.json,
+            reviews: reviewResponse.json.hits
+        }
     },
 }
 </script>
