@@ -1,0 +1,28 @@
+{
+    "baseUrl": "http://localhost:4200",
+    "ignoreTestFiles": [
+        "**/1-getting-started/*",
+        "**/2-advanced-examples/*"
+    ],
+    "viewportHeight": 1080,
+    "viewportWidth": 1920,
+    "video": false,
+    "env": {
+        "email": "amandine.eap@gmail.com",
+        "password": "amandine",
+        "apiUrl": "https://conduit.productionready.io/api/"
+    },
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "reporterEnabled": "spec, mocha-junit-reporter mochawesome",
+        "mochaJunitReporterReporterOptions": {
+          "mochaFile": "cypress/results/junit/results-[hash].xml"
+        },
+        "reporterOptions": {
+            "reportDir": "cypress/results/mochawesome",
+            "overwrite": false,
+            "html": false,
+            "json": true
+        }
+    }
+}
