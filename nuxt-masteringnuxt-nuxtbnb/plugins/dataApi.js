@@ -10,13 +10,14 @@ export default function (context, inject) {
     getHome,
     getReviewsByHomeId,
     getUserByHomeId,
+    getHomesByLocation,
   });
 
   async function getHome(homeId) {
     try {
       return unWrap(
         await fetch(
-          `https://${appId}-dsn.algolia.net/1/indexes/mastering-nuxt-nuxtbnb/${homeId}`,
+          `https://${appId}-dsn.algolia.net/1/indexes/homes/${homeId}`,
           {
             headers,
           }
@@ -56,6 +57,25 @@ export default function (context, inject) {
           method: "POST",
           body: JSON.stringify({
             filters: `homeId:${homeId}`,
+            attributesToHighlight: [],
+          }),
+        })
+      );
+    } catch (error) {
+      return getErrorResponse(error);
+    }
+  }
+
+  async function getHomesByLocation(Lat, Lng, radiusInMeters = 1500) {
+    try {
+      return unWrap(
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/query`, {
+          headers,
+          method: "POST",
+          body: JSON.stringify({
+            aroundLatLng: `${Lat},${Lng}`,
+            aroundRadius: radiusInMeters,
+            hitsPerPage: 10,
             attributesToHighlight: [],
           }),
         })

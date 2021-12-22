@@ -32,8 +32,7 @@ export default {
             if(!this.isTooLong || this.isExpanded){
                 return this.chunks && this.chunks.join(' ')
             }
-             console.log('too long', this.isTooLong)
-                return this.chunks && this.chunks[0]+ '...'
+            return this.chunks && this.chunks[0]+ '...'
         }
     },
     created(){

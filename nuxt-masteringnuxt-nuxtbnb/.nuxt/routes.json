@@ -1,5 +1,12 @@
 [
   {
+    "name": "Search",
+    "path": "/Search",
+    "component": "/Users/amandine/Documents/Amandine/GitHub/tutorials/nuxt-masteringnuxt-nuxtbnb/pages/Search.vue",
+    "chunkName": "pages/Search",
+    "_name": "_4629653e"
+  },
+  {
     "name": "home-id",
     "path": "/home/:id?",
     "component": "/Users/amandine/Documents/Amandine/GitHub/tutorials/nuxt-masteringnuxt-nuxtbnb/pages/home/_id.vue",
