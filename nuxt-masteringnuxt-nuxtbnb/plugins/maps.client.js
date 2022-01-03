@@ -50,7 +50,7 @@ export default function (context, inject) {
   }
 
   // 2
-  function showMap(canvas, lat, lng) {
+  function showMap(canvas, lat, lng, markers) {
     if (!isLoaded) {
       waiting.push({
         fn: showMap,
@@ -64,10 +64,39 @@ export default function (context, inject) {
       center: new window.google.maps.LatLng(lat, lng),
       disableDefaultUI: true,
       zoomControl: true,
+      styles: [{
+        featureType: 'poi.business',
+        elementType: 'labels.icon',
+        stylers: [
+          {
+            visibility: 'off'
+          }
+        ]
+      }]
     };
     const map = new window.google.maps.Map(canvas, mapOptions);
-    const position = new window.google.maps.LatLng(lat, lng);
-    const marker = new window.google.maps.Marker(position);
-    marker.setMap(map);
+    if(!markers){
+      const position = new window.google.maps.LatLng(lat, lng);
+      const marker = new window.google.maps.Marker({position, clickable: false});
+      marker.setMap(map);
+      return
+    }
+
+    const bounds = new window.google.maps.LatLngBounds();
+    markers.forEach((home) =>{
+      const position = new window.google.maps.LatLng(home.lat, home.lng);
+      const marker = new window.google.maps.Marker({
+        position,
+        Label: {
+          text: `$${home.pricePerNight}`,
+          className: `marker home-${home.id}`
+        },
+        clickable: false
+      });
+      marker.setMap(map);
+      bounds.extend(position);
+    })
+
+    map.fitBounds(bounds);
   }
 }
