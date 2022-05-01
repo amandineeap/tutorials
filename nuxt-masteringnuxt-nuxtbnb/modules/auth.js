@@ -19,7 +19,6 @@ export default function() {
         console.log(idToken)
 
         const ticket = await getUser(idToken)
-        console.log(ticket)
 
         req.identity = {
             id: ticket.sub,

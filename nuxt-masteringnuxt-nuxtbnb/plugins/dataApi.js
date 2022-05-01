@@ -1,9 +1,9 @@
-export default function (context, inject) {
-  const appId = "Y8FIN6RMEZ";
-  const apiKey = "04ffd36c08ca41539b0971eab04ca5e5";
+import { unWrap, getErrorResponse } from "~/utils/fetchUtils";
+
+export default function ({$config}, inject) {
   const headers = {
-    "X-Algolia-API-Key": apiKey,
-    "X-Algolia-Application-Id": appId,
+    "X-Algolia-API-Key": $config.algolia.key,
+    "X-Algolia-Application-Id": $config.algolia.appId,
   };
 
   inject("dataApi", {
@@ -17,7 +17,7 @@ export default function (context, inject) {
     try {
       return unWrap(
         await fetch(
-          `https://${appId}-dsn.algolia.net/1/indexes/homes/${homeId}`,
+          `https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/homes/${homeId}`,
           {
             headers,
           }
@@ -32,7 +32,7 @@ export default function (context, inject) {
     try {
       return unWrap(
         await fetch(
-          `https://${appId}-dsn.algolia.net/1/indexes/reviews/query`,
+          `https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/reviews/query`,
           {
             headers,
             method: "POST",
@@ -52,7 +52,7 @@ export default function (context, inject) {
   async function getUserByHomeId(homeId) {
     try {
       return unWrap(
-        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/users/query`, {
+        await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/users/query`, {
           headers,
           method: "POST",
           body: JSON.stringify({
@@ -69,7 +69,7 @@ export default function (context, inject) {
   async function getHomesByLocation(Lat, Lng, radiusInMeters = 1500) {
     try {
       return unWrap(
-        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/query`, {
+        await fetch(`https://${$config.algolia.appId}-dsn.algolia.net/1/indexes/homes/query`, {
           headers,
           method: "POST",
           body: JSON.stringify({
@@ -85,18 +85,5 @@ export default function (context, inject) {
     }
   }
 
-  async function unWrap(response) {
-    const json = await response.json();
-    const { ok, status, statusText } = response;
-    return { json, ok, status, statusText };
-  }
-
-  function getErrorResponse(error) {
-    return {
-      ok: false,
-      status: 500,
-      statusText: error.message,
-      json: {},
-    };
-  }
+ 
 }
