@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["es2018"],
+    "module": "commonjs",
+    "outDir": "lib",
+    "sourceMap": true,
+    "target": "es2017"
+  }
+  // "include": ["src/**/*"]
+}
