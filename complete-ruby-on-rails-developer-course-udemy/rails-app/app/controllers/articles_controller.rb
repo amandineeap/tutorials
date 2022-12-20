@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
     @article = Article.new()
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
     # render plain: params[:article] # need data: { turbo: false } on form_with to work
     @article = Article.new(params.require(:article).permit(:title, :description))
@@ -19,8 +23,17 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was created successfully"
       redirect_to @article # article_path(@article)
     else
-      flash[:notice] = @article.errors.full_messages
       render 'new', status: 422
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(params.require(:article).permit(:title, :description))
+      flash[:notice] = "Article was updated successfully"
+      redirect_to @article
+    else 
+      render 'edit'
     end
   end
 end
