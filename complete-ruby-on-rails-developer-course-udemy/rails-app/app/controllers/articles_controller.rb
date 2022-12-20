@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new()
   end
 
   def create
@@ -15,8 +16,8 @@ class ArticlesController < ApplicationController
     @article = Article.new(params.require(:article).permit(:title, :description))
     # render plain: @article.inspect # need data: { turbo: false } on form_with to work
     if @article.save
-      flash[:notice] = "Your Article was Created"
-      redirect_to article_path(@article)
+      flash[:notice] = "Article was created successfully"
+      redirect_to @article # article_path(@article)
     else
       flash[:notice] = @article.errors.full_messages
       render 'new', status: 422
