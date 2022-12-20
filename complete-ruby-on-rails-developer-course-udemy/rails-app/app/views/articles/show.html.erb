@@ -1,9 +1,2 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @article %>
-
-<div>
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
-</div>
+<h1><%= @article.title %></h1>
+<p><%= @article.description %></p>
