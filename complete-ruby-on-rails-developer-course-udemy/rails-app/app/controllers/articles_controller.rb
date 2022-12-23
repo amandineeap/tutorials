@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
   def create
     # render plain: params[:article] # need data: { turbo: false } on form_with to work
     @article = Article.new(article_params)
+    @article.user = User.first
     # render plain: @article.inspect # need data: { turbo: false } on form_with to work
     if @article.save
       flash[:notice] = "Article was created successfully"
