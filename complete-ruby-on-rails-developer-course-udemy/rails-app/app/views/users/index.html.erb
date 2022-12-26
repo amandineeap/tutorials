@@ -1,5 +1,8 @@
 <h1>Users</h1>
 <div class="text-center">
+
+<%= will_paginate @users %>
+
 <% @users.each do |user| %>
   <div class="card">
     <div class="card-body">
@@ -9,4 +12,7 @@
     </div>
   </div>
 <% end %>
+
+<%= will_paginate @users %>
+
 </div>
