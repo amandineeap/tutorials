@@ -1,0 +1,13 @@
+<h1>Categories</h1>
+<div class="text-center">
+
+<%= will_paginate @categories %>
+
+<% @categories.each do |category| %>
+  <a href="categories/<%= category.id %>"><%= category.name %></a><br/>
+<% end %>
+
+<%= will_paginate @categories %>
+
+<p><%= link_to 'Create new category', new_category_path %></p>
+</div>
