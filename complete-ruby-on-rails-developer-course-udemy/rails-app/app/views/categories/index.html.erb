@@ -5,6 +5,7 @@
 
 <% @categories.each do |category| %>
   <a href="/categories/<%= category.id %>"><%= category.name %></a><br/>
+  <%= pluralize(category.articles.count, "articles") %>
 <% end %>
 
 <%= will_paginate @categories %>

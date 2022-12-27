@@ -5,7 +5,7 @@
   <p><%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Delete', user_path(@user), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></p>
 <% end %>
 
-<h2>User's articles</h2>
+<h2>User's <%= pluralize(@user.articles.count, "article") %></h2>
 <% @user.articles.each do |article| %>
   <%= render 'articles/article', article: article %>
 <% end %>

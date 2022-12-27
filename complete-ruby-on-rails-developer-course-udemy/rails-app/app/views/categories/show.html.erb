@@ -1,1 +1,7 @@
-<p><%= @category.name %></p>
+<h1>Category: <%= @category.name %></h1>
+
+<h2><%= pluralize(@category.articles.count, "article") %></h2>
+<% @category.articles.each do |article| %>
+  <%= render 'articles/article', article: article %>
+<% end %>
+
