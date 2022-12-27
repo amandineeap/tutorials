@@ -1,7 +1,11 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.description %></p>
 <p>Created by user: <%= @article.user.username if @article.user %></p>
-
+<% if @article.categories.any? %>
+  <% @article.categories.each do |cat| %>
+    <%= link_to cat.name, category_path(cat)%>
+  <% end %>
+<% end %>
 <% if logged_in? && @article.user == current_user %>
   <p><%= link_to 'Edit', edit_article_path(@article) %> | <%= link_to 'Delete', article_path(@article), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %> | <%= link_to 'Return to articles', articles_path %></p>
 <% end %>
