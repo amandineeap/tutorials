@@ -1,9 +1,9 @@
 <div class="ui mini inverted menu">
   <div class="ui container">
-    <a class="item">
+    <a class="item" href="/">
       Home
     </a>
-    <a class="item">
+    <a class="item" href="/">
       Messages
     </a>
     <a class="item">
@@ -15,8 +15,14 @@
     <a class="item">
       Spanish
     </a>
+    <% if logged_in? %>
       <a class="item">
-      Sign up
-    </a>
+        My Profile
+      </a>
+      <%= link_to "Logout", logout_path, class: 'item', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }%>    <% else %>
+      <a class="item" href="/login">
+        Sign up
+      </a>
+    <% end %>
   </div>
 </div>
