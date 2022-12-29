@@ -10,10 +10,12 @@ import "jquery_ujs"
 //= require semantic-ui
 //= require_tree .
 
-$(function() {     
-  $( document ).ready(function() {
-    console.log('hello')
-    // $(".ui.dropdown").dropdown();   
-  });
-}); 
+// $(function() {     
+//   $( document ).ready(function() {
+//     // console.log('hello')
+//     // $(".ui.dropdown").dropdown();   
+//   });
+// }); 
 
+// import "./channels"
+import "./channels/chatroom_channel"
