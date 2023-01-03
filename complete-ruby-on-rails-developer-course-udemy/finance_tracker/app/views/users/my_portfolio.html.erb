@@ -1,0 +1,16 @@
+<h1>My portfolio</h1>
+<div class="search-area"> 
+  <p>Search stocks</p>
+  <%= form_tag '#', method: :get do %>
+  <div class="form-group row">
+  <div class="col-sm-9">
+    <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: 'form-control form-control-large' %>
+  </div>
+  <div class="col-sm-3">
+    <%= button_tag type: :submit, class: 'btn btn-success' do %>
+      <%= 'Search' %>
+    <% end %>
+  </div>
+  </div>
+  <% end %>
+</div>
