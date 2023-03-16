@@ -26,12 +26,14 @@ RSpec.describe Card do
     expect(card.suit).to eq('Spades')
   end
 
-  it 'has a rank and that rank can change' do
-    expect(card.rank).to eq('Ace')
-    # card.rank = 'Queen'
-    # expect(card.rank).to eq('Queen')
-  end
+  context 'update rank' do
+    let(:card) { Card.new('Queen', 'Spades') }
 
+    it 'has a rank and that rank can change' do
+      expect(card.rank).to eq('Queen')
+    end
+  end
+ 
   it 'has a custom error message' do
     comparison = 'Spades'
     expect(card.suit).to eq(comparison), "Hey, i expected #{comparison} but I got #{card.suit} instead" 
